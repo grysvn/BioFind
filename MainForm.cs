@@ -10,6 +10,7 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 
+using Define;
 using HtmlAgilityPack;
 
 namespace BioFind
@@ -156,5 +157,11 @@ namespace BioFind
             saveData();
         }
         #endregion
+
+        private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Preferences prefs = new Preferences();
+            prefs.ShowDialog();
+        }
     }
 }
