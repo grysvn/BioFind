@@ -156,12 +156,12 @@ namespace BioFind
         {
             saveData();
         }
-        #endregion
-
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Preferences prefs = new Preferences();
             prefs.ShowDialog();
         }
+        #endregion
+
     }
 }

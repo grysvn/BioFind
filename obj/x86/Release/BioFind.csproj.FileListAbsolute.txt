@@ -18,3 +18,8 @@ C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\obj\x86\Release\BioFind.
 C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\obj\x86\Release\BioFind.MainForm.resources
 C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\obj\x86\Release\BioFind.Properties.Resources.resources
 C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\obj\x86\Release\BioFind.csproj.GenerateResource.Cache
+C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\bin\Release\Define.dll
+C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\bin\Release\Newtonsoft.Json.dll
+C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\bin\Release\Define.pdb
+C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\bin\Release\Newtonsoft.Json.pdb
+C:\Users\Matt\Dropbox\School\AP Biology\BioFind\BioFind\bin\Release\Newtonsoft.Json.xml
