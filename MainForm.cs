@@ -14,14 +14,15 @@ using HtmlAgilityPack;
 
 namespace BioFind
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void open_Click(object sender, EventArgs e)
+        #region Menustrip Operational Functions
+        private void openFile()
         {
             if (MessageBox.Show("WARNING!  This will clear the list!  Are you sure you want to do this?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
                 wordList.Items.Clear();
@@ -41,21 +42,10 @@ namespace BioFind
                 foreach (string word in words)
                     wordList.Items.Add(new ListViewItem(word));
             }
-            get.Enabled = true;
         }
-
-        private void showExample_Click(object sender, EventArgs e)
+        private int getData()
         {
-            MessageBox.Show("To properly load the file, just make a text file with each word on it's own line.  No other extra characters.");
-        }
-
-        private void get_Click(object sender, EventArgs e)
-        {
-            string temp = get.Text;
-            get.Text += " (busy)";
-            MessageBox.Show("The application will hang for a small period of time depending on the size of the list.");
             int missed = 0;
-            int total = 0;
             foreach (ListViewItem item in wordList.Items)
             {
                 bool found = true;
@@ -94,15 +84,10 @@ namespace BioFind
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, definition));
                 if (!found)
                     missed++;
-                total++;
             }
-            get.Text = temp;
-            clean.Enabled = true;
-            save.Enabled = true;
-            MessageBox.Show(missed.ToString() + " definitions out of " + total.ToString() + " weren't found.");
+            return missed;
         }
-
-        private void save_Click(object sender, EventArgs e)
+        private void saveData()
         {
             SaveFileDialog save = new SaveFileDialog();
             save.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
@@ -119,27 +104,57 @@ namespace BioFind
             else
                 return;
         }
+        //refactor this later if need still exists
+        //private void clean()
+        //{
+        //    foreach (ListViewItem item in wordList.Items)
+        //    {
+        //        string text = item.SubItems[1].Text;
+        //        if (text.StartsWith("(1)"))
+        //            text = text.Replace("(1)", "");
+        //        if (text.StartsWith("1."))
+        //            text = text.Replace("1.", "");
+        //        text = text.Trim(new char[] { ' ', '.', ','});
+        //        text = text.Trim();
+        //        item.SubItems[1].Text = text;
+        //    }
+        //}
+        #endregion
 
-        private void clean_Click(object sender, EventArgs e)
-        {
-            foreach (ListViewItem item in wordList.Items)
-            {
-                string text = item.SubItems[1].Text;
-                if (text.StartsWith("(1)"))
-                    text = text.Replace("(1)", "");
-                if (text.StartsWith("1."))
-                    text = text.Replace("1.", "");
-                text = text.Trim(new char[] { ' ', '.', ','});
-                text = text.Trim();
-                item.SubItems[1].Text = text;
-            }
-        }
-
+        #region Miscellaneous Functions
         private string MatchTester(Match match) {
             if (match.Success)
                 return "";
             else
                 return match.Value;
         }
+        #endregion
+
+        #region Menustrip Event Functions
+        private void open_Click(object sender, EventArgs e)
+        {
+            openFile();
+            get.Enabled = true;
+        }
+        private void get_Click(object sender, EventArgs e)
+        {
+            string temp = get.Text;
+            get.Text += " (busy)";
+            MessageBox.Show("The application will hang for a small period of time depending on the size of the list.");
+            int missed = getData();
+            MessageBox.Show(missed.ToString() + " definitions were missed.");
+            get.Text = temp;
+            //clean.Enabled = true; //not needed for now
+            save.Enabled = true;
+        }
+        private void showExample_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To properly load the file, just make a text file with each word on it's own line.  No other extra characters.");
+        }
+        private void save_Click(object sender, EventArgs e)
+        {
+            saveData();
+        }
+        #endregion
     }
 }

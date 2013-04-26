@@ -42,8 +42,8 @@ local.properties
 *.sln.docstates
 
 # Build results
-[Dd]ebug/
-[Rr]elease/
+#[Dd]ebug/
+#[Rr]elease/
 *_i.c
 *_p.c
 *.ilk
@@ -60,7 +60,7 @@ local.properties
 *.tlh
 *.tmp
 *.vspscc
-.builds
+#.builds
 *.dotCover
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
@@ -94,11 +94,11 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish
+#publish
 
 # Others
-[Bb]in
-[Oo]bj
+#[Bb]in
+#[Oo]bj
 sql
 TestResults
 *.Cache
